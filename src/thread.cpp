@@ -328,7 +328,7 @@ void Thread::join() {
 void Thread::setName(const char* fmt, ...) {
   static auto setThreadDescription =
       reinterpret_cast<HRESULT(WINAPI*)(HANDLE, PCWSTR)>(GetProcAddress(
-          GetModuleHandle("kernelbase.dll"), "SetThreadDescription"));
+          GetModuleHandle(TEXT("kernelbase.dll")), "SetThreadDescription"));
   if (setThreadDescription == nullptr) {
     return;
   }
